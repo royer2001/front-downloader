@@ -37,13 +37,15 @@ const Downloader = () => {
     };
 
     const downloadFile = (fileUrl, fileName) => {
+        console.log(fileUrl);
+        
         axios({
             url: fileUrl,
             method: 'GET',
             responseType: 'blob',  // Esto nos asegura que la respuesta será un archivo binario (blob)
         })
             .then((response) => {
-                const blob = new Blob([response.data], { type: 'audio/mp4' });
+                const blob = new Blob([response.data], { type: 'audio/mpeg' });
                 const url = window.URL.createObjectURL(blob);  // Crear un enlace temporal
                 const link = document.createElement('a');
                 link.href = url;
@@ -80,7 +82,7 @@ const Downloader = () => {
                 <div className="download-link-box">
                     <button
                         className="download-link"
-                        onClick={() => downloadFile(downloadData.download_url, downloadData.title)}  // Llamar a la función de descarga en lugar de// Lo hacemos visible
+                        onClick={() => downloadFile(downloadData.url, downloadData.title)}  // Llamar a la función de descarga en lugar de// Lo hacemos visible
                     >
                         DOWNLOAD AUDIO <FaFileDownload />
                     </button>
