@@ -43,7 +43,7 @@ const Downloader = () => {
             responseType: 'blob',  // Esto nos asegura que la respuesta será un archivo binario (blob)
         })
             .then((response) => {
-                const blob = new Blob([response.data], { type: 'audio/mpeg' });
+                const blob = new Blob([response.data], { type: 'audio/mp4' });
                 const url = window.URL.createObjectURL(blob);  // Crear un enlace temporal
                 const link = document.createElement('a');
                 link.href = url;
